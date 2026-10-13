@@ -1,0 +1,9 @@
+:root { color-scheme: dark; font-family: 'Segoe UI', sans-serif; background: #101114; color: #eee; }
+body { margin: 0; }
+nav { height: 62px; box-sizing: border-box; display: flex; align-items: center; gap: 5px; padding: 0 12px; border-bottom: 1px solid #303138; }
+strong { white-space: nowrap; margin-right: 12px; font-size: 15px; }
+.logo { color: #ff5b6b; font-size: 23px; margin-right: 6px; }
+button { border: 0; background: transparent; color: #ddd; padding: 9px 10px; border-radius: 6px; cursor: pointer; font: inherit; font-size: 13px; }
+button:hover, button:focus-visible { background: #2c2e36; color: white; }
+button:focus-visible { outline: 2px solid #ff5b6b; }
+.space { flex: 1; }

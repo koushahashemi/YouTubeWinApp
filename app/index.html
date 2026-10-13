@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tube Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav aria-label="Player controls">
+    <strong><span class="logo">♪</span> Tube Music</strong>
+    <button data-action="home" title="Home and personalized mixes">Home</button>
+    <button data-action="library" title="Your playlists and library">Library</button>
+    <button data-action="likes" title="Your liked songs">Favorites</button>
+    <div class="space"></div>
+    <button data-action="previous" title="Previous track" aria-label="Previous track">⏮</button>
+    <button data-action="play" title="Play or pause" aria-label="Play or pause">⏯</button>
+    <button data-action="next" title="Next track" aria-label="Next track">⏭</button>
+    <button data-action="reload" title="Reload YouTube Music" aria-label="Reload">↻</button>
+    <button data-action="tray" title="Minimize to system tray">Tray</button>
+  </nav>
+  <script src="renderer.js"></script>
+</body>
+</html>

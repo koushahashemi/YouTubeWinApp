@@ -1,0 +1,25 @@
+{
+  "name": "youtube-music-player",
+  "version": "1.0.0",
+  "description": "A minimal YouTube Music desktop player with system tray support",
+  "main": "app/main.js",
+  "author": "YouTubeWinApp",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dist:win": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "^42.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.youtubewinapp.player",
+    "productName": "Tube Music Player",
+    "files": ["app/**/*", "assets/**/*", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "target": "portable", "signAndEditExecutable": false, "artifactName": "TubeMusicPlayer-${version}.exe" }
+  }
+}
