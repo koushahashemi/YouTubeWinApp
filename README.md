@@ -17,6 +17,12 @@ To make a standalone executable, double-click **Build EXE.bat**. Open `dist/Tube
 
 The repository contains source and a small tray icon, with no EXE files. Local builds still download dependencies from `registry.npmjs.org` and Electron/packaging archives from GitHub release servers, including `github.com` and `release-assets.githubusercontent.com`. Those archives contain executables. If your firewall blocks them too, ask your network administrator to allow the required downloads or build on a permitted connection. Building locally does not bypass a network restriction. If a build fails, the BAT file keeps its error message visible.
 
+### If npm says "Cannot read property 'electron' of undefined"
+
+Older npm versions can fail on this project's version 3 lockfile with this error. Install the current Node.js LTS from nodejs.org, including npm and Add to PATH. This project requires Node.js 22.12 or newer and npm 10 or newer. Close existing command windows and rerun **Build EXE.bat**. The BAT files check both versions before installation.
+
+If the check still reports old versions, run `where node`, `where npm`, `node -v`, and `npm -v` in Command Prompt. A standalone npm installation under `%APPDATA%\npm` or another old Node installation may take precedence over the new installation. Remove the outdated installation or correct its PATH entry. Do not delete the project's lockfile; `npm ci` uses it to reproduce the tested dependencies.
+
 ## Controls
 
 - Home, Library, and Favorites switch between your music collections.

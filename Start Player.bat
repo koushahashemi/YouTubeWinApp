@@ -1,9 +1,8 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-where npm.cmd >nul 2>nul
+call "scripts\Check Tools.bat"
 if errorlevel 1 (
-  echo Please install Node.js LTS from https://nodejs.org then run this file again.
   pause
   exit /b 1
 )
