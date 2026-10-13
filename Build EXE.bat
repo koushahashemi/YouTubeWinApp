@@ -1,7 +1,7 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-call "scripts\Check Tools.bat"
+call "scripts\Prepare Node.bat"
 if errorlevel 1 (
   pause
   exit /b 1

@@ -4,10 +4,11 @@ A small Windows desktop shell for your YouTube Music account. Home shows your pe
 
 ## Run on Windows
 
-1. Install [Node.js LTS](https://nodejs.org/) for Windows with its default options. If Windows Package Manager is available, you can instead run `winget install OpenJS.NodeJS.LTS` in PowerShell.
-2. On [GitHub](https://github.com/koushahashemi/YouTubeWinApp), choose **Code > Download ZIP**, then **Extract All**. You must extract the files before running a BAT file. Alternatively, use `git clone https://github.com/koushahashemi/YouTubeWinApp.git`.
-3. Double-click **Build EXE.bat** inside the extracted folder. It installs the build tools, runs the control tests, builds the app, and opens the output folder. No administrator privileges should be needed.
-4. Run `dist/TubeMusicPlayer-1.0.0.exe` and sign in to YouTube Music.
+1. On [GitHub](https://github.com/koushahashemi/YouTubeWinApp), choose **Code > Download ZIP**, then **Extract All**. You must extract the files before running a BAT file. Alternatively, use `git clone https://github.com/koushahashemi/YouTubeWinApp.git`.
+2. Double-click **Build EXE.bat** inside the extracted folder. It downloads a private Node.js runtime, installs the build tools, runs the control tests, builds the app, and opens the output folder. No administrator privileges should be needed.
+3. Run `dist/TubeMusicPlayer-1.0.0.exe` and sign in to YouTube Music.
+
+You can keep Node.js 12 installed, or have no Node.js installation at all. Both launchers use a private Node.js 24.21.0 runtime under `.tools/node`, verify its ZIP against the official SHA-256 checksum, and temporarily put it first in PATH only for that launcher. Your global Node/npm installation and system PATH remain unchanged. This requires x64 Windows and Windows PowerShell 5.1 or newer (included with Windows 10/11). The downloaded runtime is reused on later launches. This supports building alongside Node 12; the modern Electron tooling itself runs under the private Node 24 runtime.
 
 To run directly from source, double-click **Start Player.bat** instead. The first launch downloads dependencies. Your session stays in the app's local Electron profile; the app does not ask for your password separately.
 
@@ -15,11 +16,11 @@ To make a standalone executable, double-click **Build EXE.bat**. Open `dist/Tube
 
 ### If your firewall blocks downloads
 
-The repository contains source and a small tray icon, with no EXE files. Local builds still download dependencies from `registry.npmjs.org` and Electron/packaging archives from GitHub release servers, including `github.com` and `release-assets.githubusercontent.com`. Those archives contain executables. If your firewall blocks them too, ask your network administrator to allow the required downloads or build on a permitted connection. Building locally does not bypass a network restriction. If a build fails, the BAT file keeps its error message visible.
+The repository contains source and a small tray icon, with no EXE files. Local builds download the private runtime ZIP from `nodejs.org`, dependencies from `registry.npmjs.org`, and Electron/packaging archives from GitHub release servers, including `github.com` and `release-assets.githubusercontent.com`. Those archives contain executables. If your firewall blocks them too, ask your network administrator to allow the required downloads or build on a permitted connection. Building locally does not bypass a network restriction. If a build fails, the BAT file keeps its error message visible.
 
 ### If npm says "Cannot read property 'electron' of undefined"
 
-Older npm versions can fail on this project's version 3 lockfile with this error. Install the current Node.js LTS from nodejs.org, including npm and Add to PATH. This project requires Node.js 22.12 or newer and npm 10 or newer. Close existing command windows and rerun **Build EXE.bat**. The BAT files check both versions before installation.
+Older npm versions can fail on this project's version 3 lockfile with this error. Download the updated source and use **Build EXE.bat**; it automatically uses its private modern runtime. Running `npm ci` directly with your global npm 6 still fails. Direct command-line development requires Node.js 22.12 or newer and npm 10 or newer.
 
 If the check still reports old versions, run `where node`, `where npm`, `node -v`, and `npm -v` in Command Prompt. A standalone npm installation under `%APPDATA%\npm` or another old Node installation may take precedence over the new installation. Remove the outdated installation or correct its PATH entry. Do not delete the project's lockfile; `npm ci` uses it to reproduce the tested dependencies.
 
